@@ -5,3 +5,5 @@ Visualizing Tverberg's theorem in the plane.
 
 What we plan to do:
 Create program that takes as input n points within a rectangular grid, and returns a Tverberg partition of size k = floor((n-1)/(d+1)+1). This will be used to plot the convex hulls of each of the k partitioned sets in a different color, outlining their intersection in black.
+
+https://doi.org/10.1112/jlms/s1-41.1.123
