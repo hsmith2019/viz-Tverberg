@@ -1,0 +1,2 @@
+# viz-Tverberg
+Visualizing Tverberg
