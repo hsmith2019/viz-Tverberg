@@ -1,6 +1,6 @@
 # viz-Tverberg
 Visualizing Tverberg's theorem in the plane.
-<img src="images/banner.png" width="720" >
+<img src="images/banner.png" width="1920" >
 
 <img src="images/tverberg_thm.png" width=480 />
 
