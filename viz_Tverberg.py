@@ -65,45 +65,32 @@ def find_tverberg(P):
             print("residual =",min_sqr_norm)
         residual_history = np.append(residual_history, min_sqr_norm)
 
-    # create incidence matrix from I
-    color_bool = np.zeros((m,r), dtype=bool)
-    for i in range(r):
-        color_bool[I==i,i] = True;
-
-
     # assign the irrelevant points to partitions
     if (n > m):
-        color_bool = np.concatenate((color_bool, color_bool[0:n-m,:]), axis= 0)
+        I = np.append(I,I[0:n-m])
 
     # compute the center-point
     center_point = np.array(P).transpose().dot(coeff)
 
     # output
     if print_output:
-        print("incidence_mat =\n",color_bool+0)
+        print("partitions =\n",I)
         print("center_point =",center_point)
-        # import matplotlib.pyplot as plt
-        # fig, ax = plt.subplots()
-        # y = residual_history
-        # ax.semilogy(y, 'o-')
-        # ax.set(xlabel='iteration', ylabel='residual', title='residual history')
-        # plt.show()
-    return (color_bool, center_point);
+    return (I,  center_point);
 
 if __name__ == '__main__':
     import numpy as np
     import matplotlib.pyplot as plt
     from scipy.spatial import ConvexHull
    
-    n = 7 #int(input ("Enter number Points :"))
+    n = 12 #int(input ("Enter number Points :"))
     d = 2 # space dimension
 
     points = np.random.rand(n, d)
 
     (partitions,center) = find_tverberg(points)
 
-    r = partitions.shape[1] # number of partitions
-    print(r)
+    r = partitions.max()+1 # number of partitions
 
     color_order = np.array([
     [     0,    0.4470,    0.7410],
@@ -120,7 +107,7 @@ if __name__ == '__main__':
     ax.set_xlim((0, 1))
     ax.set_ylim((0, 1))
     for i in range(r):
-        pts = points[partitions[:,i],:]
+        pts = points[partitions==i,:]
         if pts.shape[0] > 3:
             hull = ConvexHull(pts)
             hull_pts =  pts[hull.vertices[:],:]
@@ -131,7 +118,7 @@ if __name__ == '__main__':
             hull_pts, 
             facecolor=color, 
             edgecolor=np.square(color),
-            alpha=0.5,
+            alpha=0.4,
             zorder=1
             )
         ax.add_patch(pgon_plt)
