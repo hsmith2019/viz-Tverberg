@@ -26,7 +26,8 @@ Sarkaria, K. S. (1992). Tverberg’s theorem via number fields. Israel journal o
 Barany, I. (1982). A generalization of Carathéodory's theorem. Discrete Mathematics, 40(2–3), 141–152. https://doi.org/10.1016/0012-365X(82)90115-7
 
 The basic procedure is as follows:
-<img src="images/procedure.png" width=1920 />
+
+<img src="images/procedure.png" width=640 />
 
 To demonstrate the progress of the algorithm, we use a generator function to yield the state before
 each pivot step and plot the current partition of the given point set along with the current guess at a Tverberg point. Once the colorful set in the higher (m-1) dimensional space contains the origin in its convex closure, the algorithm terminates and a Tverberg partition has been found.
