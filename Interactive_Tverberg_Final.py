@@ -61,6 +61,8 @@ class PlotPoints(object):
             ax.set_title('Click To Create Points')
             ax.set_xlim((-1, 1))
             ax.set_ylim((-1, 1))
+            self.fig=fig
+            self.ax= ax
 
             r = partition.max()+1 # number of partitions
             for i in range(r):
@@ -80,7 +82,7 @@ class PlotPoints(object):
                     alpha=0.2,
                     zorder=1
                     )
-                ax.add_patch(pgon_plt)
+                self.ax.add_patch(pgon_plt)
                 pt_plt = plt.scatter(
                     pts[:,0], 
                     pts[:,1], 
@@ -237,6 +239,7 @@ if __name__ == '__main__':
     points = plt.ginput(n, show_clicks= True)
     pts=np.asarray(points)
     PPlot = PlotPoints(fig,ax,pts)
+    plt.close()
     PPlot.Draw()
 
 
